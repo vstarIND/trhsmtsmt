@@ -6,38 +6,20 @@
 <title>The Rising Hindustan</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-html,body{
-    font-family: Georgia, 'Times New Roman', serif;
+body{
+    font-family:Georgia,'Times New Roman',serif;
     background:#fafaf8;
     color:#1a1a1a;
-}
-
-/* ================= CURSOR ================= */
-@media (hover:hover) and (pointer:fine){
-    body{cursor:none;}
-    .cursor{
-        position:fixed;
-        width:12px;
-        height:12px;
-        background:#FF9933;
-        border-radius:50%;
-        pointer-events:none;
-        z-index:9999;
-    }
 }
 
 /* ================= HEADER ================= */
 header{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:1.5rem;
+    justify-content:space-between;
+    padding:1rem 1.5rem;
     background:#fff;
     border-bottom:1px solid #e0e0e0;
     position:sticky;
@@ -45,12 +27,15 @@ header{
     z-index:1000;
 }
 
-.logo{
-    font-family:system-ui,sans-serif;
-    font-size:1.4rem;
-    font-weight:700;
+/* LOGO IMAGE */
+.logo img{
+    height:48px;          /* fixed height */
+    width:auto;           /* auto width */
+    max-width:180px;      /* safety */
+    object-fit:contain;
 }
 
+/* NAV */
 .nav{
     display:flex;
     gap:2rem;
@@ -58,10 +43,11 @@ header{
 
 .nav a{
     text-decoration:none;
+    font-family:system-ui,sans-serif;
     font-size:.85rem;
     letter-spacing:.12em;
     text-transform:uppercase;
-    color:#1a1a1a;
+    color:#111;
     position:relative;
 }
 
@@ -75,45 +61,35 @@ header{
     background:#FF9933;
     transition:.3s;
 }
+.nav a:hover::after{width:100%;}
 
-.nav a:hover::after{
-    width:100%;
-}
-
-/* Hamburger */
+/* HAMBURGER */
 .hamburger{
     display:none;
-    flex-direction:column;
-    gap:6px;
     background:none;
     border:none;
+    font-size:1.8rem;
+    cursor:pointer;
 }
 
-.hamburger span{
-    width:26px;
-    height:2px;
-    background:#000;
-}
-
-/* Mobile menu */
+/* MOBILE */
 @media(max-width:768px){
+    .hamburger{display:block;}
+
     .nav{
         position:fixed;
         top:0;
         right:-100%;
-        flex-direction:column;
-        background:#fff;
         height:100vh;
         width:70%;
+        background:#fff;
+        flex-direction:column;
         padding:4rem 2rem;
         transition:.4s;
+        box-shadow:-10px 0 30px rgba(0,0,0,.1);
     }
-    .nav.active{
-        right:0;
-    }
-    .hamburger{
-        display:flex;
-    }
+
+    .nav.active{right:0;}
 }
 
 /* ================= MAIN ================= */
@@ -132,80 +108,51 @@ main{
     margin-bottom:2rem;
 }
 
-/* Featured */
-.featured-link{
-    text-decoration:none;
-    color:inherit;
-}
-
-.featured{
-    margin-bottom:4rem;
-}
-
+/* FEATURED */
+.featured-link{text-decoration:none;color:inherit;}
 .featured img{
     width:100%;
-    height:400px;
-    object-fit:cover;
+    height:420px;
+    object-fit:cover;     /* AUTO FIT ANY IMAGE */
     margin-bottom:1.5rem;
 }
-
 .featured h2{
     font-family:system-ui,sans-serif;
-    font-size:2.4rem;
+    font-size:2.3rem;
     margin-bottom:1rem;
 }
+.featured p{max-width:600px;color:#555;}
 
-.featured p{
-    max-width:600px;
-    color:#555;
-    font-size:1.05rem;
-}
-
-/* Articles */
+/* ARTICLES */
 .grid{
     display:grid;
     grid-template-columns:1fr;
     gap:2rem;
 }
-
 @media(min-width:768px){
-    .grid{
-        grid-template-columns:1fr 1fr;
-    }
+    .grid{grid-template-columns:1fr 1fr;}
 }
 
-.article-link{
-    text-decoration:none;
-    color:inherit;
-}
-
+.article-link{text-decoration:none;color:inherit;}
 .article{
     border-bottom:1px solid #e0e0e0;
     padding-bottom:2rem;
 }
-
 .article img{
     width:100%;
     height:220px;
-    object-fit:cover;
+    object-fit:cover;     /* AUTO SIZE FIX */
     margin-bottom:1rem;
     transition:.4s;
 }
-
-.article:hover img{
-    transform:scale(1.03);
-}
-
+.article:hover img{transform:scale(1.03);}
 .article h3{
     font-family:system-ui,sans-serif;
     font-size:1.3rem;
 }
+.article:hover h3{color:#FF9933;}
 
-.article:hover h3{
-    color:#FF9933;
-}
-
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer{
     background:#fff;
     border-top:1px solid #e0e0e0;
@@ -213,20 +160,18 @@ footer{
     text-align:center;
     margin-top:4rem;
 }
-
-footer p{
-    font-family:system-ui,sans-serif;
-    color:#777;
-}
+footer p{font-family:system-ui,sans-serif;color:#777;}
 </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
-
 <header>
-    <div class="logo">The Rising Hindustan</div>
+    <!-- LOGO IMAGE -->
+    <div class="logo">
+        <img src="logo.png" alt="The Rising Hindustan">
+        <!-- 👆 yaha tumhari image -->
+    </div>
 
     <nav class="nav">
         <a href="#featured">Featured</a>
@@ -235,53 +180,35 @@ footer p{
         <a href="#">About</a>
     </nav>
 
-    <button class="hamburger">
-        <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger">☰</button>
 </header>
 
 <main>
 
-<!-- FEATURED -->
 <a href="featured.html" class="featured-link">
 <section class="featured" id="featured">
-    <h1 class="section-title">Featured</h1>
-    <img src="https://picsum.photos/1000/400" alt="">
-    <h2>India’s Economic Rise Reshaping Global Markets</h2>
-    <p>A deep analysis on how India’s economy is influencing global trade, tech, and geopolitics.</p>
+<h1 class="section-title">Featured</h1>
+<img src="https://picsum.photos/1200/700">
+<h2>India’s Economic Rise Reshaping Global Markets</h2>
+<p>How India’s economy is influencing global trade and geopolitics.</p>
 </section>
 </a>
 
-<!-- LATEST -->
 <section id="latest">
 <h1 class="section-title">Latest</h1>
 <div class="grid">
 
-<a href="article1.html" class="article-link">
+<a href="#" class="article-link">
 <article class="article">
-<img src="https://picsum.photos/600/300?1">
-<h3>Digital Revolution Transforms Indian Education</h3>
+<img src="https://picsum.photos/900/400">
+<h3>Digital Revolution in Education</h3>
 </article>
 </a>
 
-<a href="article2.html" class="article-link">
+<a href="#" class="article-link">
 <article class="article">
-<img src="https://picsum.photos/600/300?2">
-<h3>Sustainable Agriculture Innovations</h3>
-</article>
-</a>
-
-<a href="article3.html" class="article-link">
-<article class="article">
-<img src="https://picsum.photos/600/300?3">
-<h3>Indian Tech Startups Go Global</h3>
-</article>
-</a>
-
-<a href="article4.html" class="article-link">
-<article class="article">
-<img src="https://picsum.photos/600/300?4">
-<h3>Culture & Innovation Shape Soft Power</h3>
+<img src="https://picsum.photos/500/900">
+<h3>Sustainable Agriculture Growth</h3>
 </article>
 </a>
 
@@ -292,23 +219,25 @@ footer p{
 
 <footer>
 <p>© The Rising Hindustan</p>
-<p>Designed by Vedant</p>
+<p>A magazine capturing India’s rise</p>
 </footer>
 
 <script>
-/* Cursor */
-const cursor=document.querySelector('.cursor');
-document.addEventListener('mousemove',e=>{
-    if(cursor){
-        cursor.style.left=e.clientX-6+'px';
-        cursor.style.top=e.clientY-6+'px';
-    }
-});
-
-/* Hamburger */
 const ham=document.querySelector('.hamburger');
 const nav=document.querySelector('.nav');
-ham.onclick=()=>nav.classList.toggle('active');
+
+ham.onclick=()=>{
+    nav.classList.toggle('active');
+    ham.textContent = nav.classList.contains('active') ? '✖' : '☰';
+};
+
+/* Close on link click */
+document.querySelectorAll('.nav a').forEach(a=>{
+    a.onclick=()=>{
+        nav.classList.remove('active');
+        ham.textContent='☰';
+    };
+});
 </script>
 
 </body>
