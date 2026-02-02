@@ -1,226 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Rising Hindustan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rising Hindustan - A Magazine Capturing India's Rise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
 
-/* HEADER */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  border-bottom: 1px solid #ddd;
-}
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.logo img {
-  height: 50px;
-}
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
 
-/* NAV */
-nav {
-  display: flex;
-  gap: 20px;
-}
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
 
-nav a {
-  text-decoration: none;
-  color: #222;
-  font-weight: bold;
-}
+        .site-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: none;
+        }
 
-/* HAMBURGER */
-.menu-btn {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
+        .menu-icon {
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
 
-/* MOBILE MENU */
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  border-top: 1px solid #ddd;
-}
+        /* MAIN CONTAINER */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.mobile-nav a {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  text-decoration: none;
-  color: #000;
-}
+        /* SECTION TITLES */
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+            color: #1a1a1a;
+        }
 
-/* SECTIONS */
-section {
-  padding: 25px;
-}
+        /* FEATURED SECTION */
+        .featured-container {
+            margin-bottom: 50px;
+        }
 
-h2 {
-  margin-bottom: 15px;
-}
+        .featured-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
 
-/* FEATURED */
-.featured {
-  display: flex;
-  flex-direction: column;
-}
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 18px;
+            border-radius: 8px 8px 0 0;
+            border-bottom: 1px solid #ccc;
+        }
 
-.featured img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 8px;
-}
+        .featured-content {
+            padding: 25px;
+        }
 
-.featured h3 {
-  margin-top: 10px;
-  font-size: 24px;
-}
+        .featured-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
 
-/* ARTICLE GRID */
-.article-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
-}
+        .featured-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-.article {
-  cursor: pointer;
-}
+        /* LATEST SECTION */
+        .latest-container {
+            margin-bottom: 50px;
+        }
 
-.article img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover; /* THIS FIXES IMAGE MESS */
-  border-radius: 6px;
-}
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
 
-.article h4 {
-  margin-top: 8px;
-  font-size: 16px;
-}
+        .article-card {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 25px;
-  border-top: 1px solid #ddd;
-  margin-top: 30px;
-}
+        .article-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            border-color: #999;
+        }
 
-footer img {
-  height: 40px;
-  margin-bottom: 10px;
-}
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+        }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
+        .article-title {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
 
-  .logo {
-    margin-bottom: 10px;
-  }
+        /* FOOTER */
+        footer {
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid #333;
+            margin-top: 50px;
+        }
 
-  nav {
-    display: none;
-  }
+        .footer-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
 
-  .menu-btn {
-    display: block;
-  }
+        .footer-logo {
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px;
+        }
 
-  .mobile-nav.show {
-    display: flex;
-  }
-}
-</style>
+        /* MOBILE STYLES */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            .logo-img {
+                height: 50px;
+            }
+
+            .site-title {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin: 30px 0 15px 0;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .featured-content {
+                padding: 20px;
+            }
+
+            .featured-title {
+                font-size: 20px;
+            }
+
+            .featured-description {
+                font-size: 14px;
+            }
+
+            .article-image {
+                height: 150px;
+            }
+
+            .article-title {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            .cards-grid {
+                gap: 15px;
+            }
+
+            main {
+                padding: 15px;
+            }
+
+            footer {
+                padding: 30px 15px;
+            }
+
+            .footer-text {
+                font-size: 16px;
+            }
+        }
+
+        /* TABLET STYLES */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* DESKTOP STYLES */
+        @media (min-width: 1025px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .site-title {
+                display: block;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo-section">
+            <img src="/images/trh.png" alt="The Rising Hindustan Logo" class="logo-img">
+        </div>
+        <button class="menu-icon">☰</button>
+    </header>
 
-<header>
-  <div class="logo">
-    <img src="/images/logo.png" alt="Logo">
-  </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- FEATURED SECTION -->
+        <section class="featured-container">
+            <h2 class="section-title">Featured</h2>
+            <article class="featured-card">
+                <div class="featured-image">Feature Image Placeholder</div>
+                <div class="featured-content">
+                    <h3 class="featured-title">India's Economic Growth Reaches New Heights</h3>
+                    <p class="featured-description">Explore the transformative developments reshaping India's economy and positioning the nation as a global powerhouse in the 21st century.</p>
+                </div>
+            </article>
+        </section>
 
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <!-- LATEST SECTION 1 -->
+        <section class="latest-container">
+            <h2 class="section-title">Latest</h2>
+            <div class="cards-grid">
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Technology Sector Drives Innovation Across Nation</h3>
+                </article>
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Startup Culture Flourishes in Indian Cities</h3>
+                </article>
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Infrastructure Development Accelerates Growth</h3>
+                </article>
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Youth Leadership Transforms Social Landscape</h3>
+                </article>
+            </div>
+        </section>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/top.html">Top</a>
-    <a href="/latest.html">Latest</a>
-  </nav>
-</header>
+        <!-- LATEST SECTION 2 -->
+        <section class="latest-container">
+            <h2 class="section-title">Latest</h2>
+            <div class="cards-grid">
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Green Energy Revolution Gaining Momentum</h3>
+                </article>
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Education System Embraces Modern Methods</h3>
+                </article>
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Cultural Heritage Meets Digital Innovation</h3>
+                </article>
+                <article class="article-card">
+                    <div class="article-image">Article Image</div>
+                    <h3 class="article-title">Global Recognition for Indian Excellence</h3>
+                </article>
+            </div>
+        </section>
+    </main>
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="/">Home</a>
-  <a href="/top.html">Top</a>
-  <a href="/latest.html">Latest</a>
-</div>
-
-<!-- FEATURED -->
-<section>
-  <h2>Featured</h2>
-  <div class="featured" onclick="goArticle('article1')">
-    <img src="/images/article1.png">
-    <h3>India’s Growth Story Continues Strongly</h3>
-  </div>
-</section>
-
-<!-- LATEST -->
-<section>
-  <h2>Latest Articles</h2>
-  <div class="article-grid">
-    <div class="article" onclick="goArticle('article2')">
-      <img src="/images/article2.png">
-      <h4>Union Budget 2026 Explained</h4>
-    </div>
-
-    <div class="article" onclick="goArticle('article3')">
-      <img src="/images/article3.png">
-      <h4>Tech Startups Rising in India</h4>
-    </div>
-  </div>
-</section>
-
-<!-- TRENDING -->
-<section>
-  <h2>Trending</h2>
-  <div class="article-grid">
-    <div class="article" onclick="goArticle('article4')">
-      <img src="/images/article4.png">
-      <h4>India’s Global Influence Grows</h4>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <img src="/images/logo.png">
-  <p>Thanks for reading ❤️</p>
-</footer>
-
-<script>
-function toggleMenu() {
-  document.getElementById("mobileNav").classList.toggle("show");
-}
-
-function goArticle(slug) {
-  window.location.href = "/articles/" + slug + ".html";
-}
-</script>
-
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-text">Thanks for reading</p>
+        <p class="footer-logo">The Rising Hindustan - A Magazine Capturing India's Rise</p>
+    </footer>
 </body>
 </html>
