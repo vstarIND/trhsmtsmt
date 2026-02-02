@@ -1,346 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Rising Hindustan - India's News Magazine</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rising Hindustan</title>
 
-        html, body {
-            cursor: none;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            color: #1a1a1a;
-            background-color: #fafaf8;
-            line-height: 1.6;
-        }
+html,body{
+    font-family: Georgia, 'Times New Roman', serif;
+    background:#fafaf8;
+    color:#1a1a1a;
+}
 
-        .cursor {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            background-color: #FF9933;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: multiply;
-            display: none;
-        }
+/* ================= CURSOR ================= */
+@media (hover:hover) and (pointer:fine){
+    body{cursor:none;}
+    .cursor{
+        position:fixed;
+        width:12px;
+        height:12px;
+        background:#FF9933;
+        border-radius:50%;
+        pointer-events:none;
+        z-index:9999;
+    }
+}
 
-        @media (hover: hover) and (pointer: fine) {
-            .cursor {
-                display: block;
-            }
-        }
+/* ================= HEADER ================= */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.5rem;
+    background:#fff;
+    border-bottom:1px solid #e0e0e0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
 
-        header {
-            background-color: #fff;
-            padding: 2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
+.logo{
+    font-family:system-ui,sans-serif;
+    font-size:1.4rem;
+    font-weight:700;
+}
 
-        .logo {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            color: #1a1a1a;
-        }
+.nav{
+    display:flex;
+    gap:2rem;
+}
 
-        .hamburger {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-        }
+.nav a{
+    text-decoration:none;
+    font-size:.85rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#1a1a1a;
+    position:relative;
+}
 
-        .hamburger span {
-            width: 100%;
-            height: 2px;
-            background-color: #1a1a1a;
-            transition: all 0.3s ease;
-        }
+.nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#FF9933;
+    transition:.3s;
+}
 
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
+.nav a:hover::after{
+    width:100%;
+}
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
+/* Hamburger */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:6px;
+    background:none;
+    border:none;
+}
 
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
+.hamburger span{
+    width:26px;
+    height:2px;
+    background:#000;
+}
 
-        @media (max-width: 768px) {
-            header {
-                border-bottom: 1px solid #e0e0e0;
-            }
-        }
+/* Mobile menu */
+@media(max-width:768px){
+    .nav{
+        position:fixed;
+        top:0;
+        right:-100%;
+        flex-direction:column;
+        background:#fff;
+        height:100vh;
+        width:70%;
+        padding:4rem 2rem;
+        transition:.4s;
+    }
+    .nav.active{
+        right:0;
+    }
+    .hamburger{
+        display:flex;
+    }
+}
 
-        main {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
+/* ================= MAIN ================= */
+main{
+    max-width:1000px;
+    margin:auto;
+    padding:3rem 1.5rem;
+}
 
-        .section-title {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 2.5rem;
-            font-weight: 600;
-        }
+.section-title{
+    font-family:system-ui,sans-serif;
+    font-size:.8rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:#666;
+    margin-bottom:2rem;
+}
 
-        .featured-article {
-            margin-bottom: 4rem;
-            animation: fadeSlideUp 0.8s ease-out;
-        }
+/* Featured */
+.featured-link{
+    text-decoration:none;
+    color:inherit;
+}
 
-        .featured-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-            margin-bottom: 2rem;
-            object-fit: cover;
-        }
+.featured{
+    margin-bottom:4rem;
+}
 
-        .featured-article h2 {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
+.featured img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    margin-bottom:1.5rem;
+}
 
-        .featured-article p {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.7;
-            max-width: 600px;
-        }
+.featured h2{
+    font-family:system-ui,sans-serif;
+    font-size:2.4rem;
+    margin-bottom:1rem;
+}
 
-        .latest-section {
-            margin-bottom: 5rem;
-        }
+.featured p{
+    max-width:600px;
+    color:#555;
+    font-size:1.05rem;
+}
 
-        .articles-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
+/* Articles */
+.grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:2rem;
+}
 
-        @media (min-width: 769px) {
-            .articles-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-            }
-        }
+@media(min-width:768px){
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
 
-        .article-item {
-            animation: fadeSlideUp 0.8s ease-out;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 2rem;
-        }
+.article-link{
+    text-decoration:none;
+    color:inherit;
+}
 
-        @media (min-width: 769px) {
-            .article-item {
-                border-bottom: none;
-            }
-        }
+.article{
+    border-bottom:1px solid #e0e0e0;
+    padding-bottom:2rem;
+}
 
-        .article-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-            margin-bottom: 1.5rem;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
+.article img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    margin-bottom:1rem;
+    transition:.4s;
+}
 
-        .article-item:hover .article-image {
-            transform: scale(1.03);
-        }
+.article:hover img{
+    transform:scale(1.03);
+}
 
-        .article-item h3 {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            transition: color 0.3s ease;
-            line-height: 1.4;
-        }
+.article h3{
+    font-family:system-ui,sans-serif;
+    font-size:1.3rem;
+}
 
-        .article-item:hover h3 {
-            color: #FF9933;
-        }
+.article:hover h3{
+    color:#FF9933;
+}
 
-        footer {
-            background-color: #fff;
-            padding: 3rem 1.5rem;
-            text-align: center;
-            border-top: 1px solid #e0e0e0;
-            margin-top: 5rem;
-        }
+/* ================= FOOTER ================= */
+footer{
+    background:#fff;
+    border-top:1px solid #e0e0e0;
+    padding:3rem 1.5rem;
+    text-align:center;
+    margin-top:4rem;
+}
 
-        .footer-text {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-credit {
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 0.85rem;
-            color: #999;
-        }
-
-        @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .featured-article {
-            animation-delay: 0s;
-        }
-
-        .latest-section:nth-of-type(1) .article-item:nth-child(1) { animation-delay: 0.1s; }
-        .latest-section:nth-of-type(1) .article-item:nth-child(2) { animation-delay: 0.2s; }
-        .latest-section:nth-of-type(1) .article-item:nth-child(3) { animation-delay: 0.3s; }
-        .latest-section:nth-of-type(1) .article-item:nth-child(4) { animation-delay: 0.4s; }
-
-        .latest-section:nth-of-type(2) .article-item:nth-child(1) { animation-delay: 0.1s; }
-        .latest-section:nth-of-type(2) .article-item:nth-child(2) { animation-delay: 0.2s; }
-        .latest-section:nth-of-type(2) .article-item:nth-child(3) { animation-delay: 0.3s; }
-        .latest-section:nth-of-type(2) .article-item:nth-child(4) { animation-delay: 0.4s; }
-    </style>
+footer p{
+    font-family:system-ui,sans-serif;
+    color:#777;
+}
+</style>
 </head>
+
 <body>
-    <div class="cursor"></div>
 
-    <header>
-        <div class="logo">The Rising Hindustan</div>
-        <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
+<div class="cursor"></div>
 
-    <main>
-        <section class="featured-article">
-            <h1 class="section-title">Featured</h1>
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%23e8e8e8' width='800' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EFeatured Article Image%3C/text%3E%3C/svg%3E" alt="Featured Article" class="featured-image">
-            <h2>India's Economic Rise Reshaping Global Markets</h2>
-            <p>A comprehensive look at how India's growing economy is influencing international trade, technology, and geopolitical dynamics in unprecedented ways.</p>
-        </section>
+<header>
+    <div class="logo">The Rising Hindustan</div>
 
-        <section class="latest-section">
-            <h1 class="section-title">Latest</h1>
-            <div class="articles-grid">
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Digital Revolution Transforms Indian Education Landscape</h3>
-                </article>
+    <nav class="nav">
+        <a href="#featured">Featured</a>
+        <a href="#latest">Latest</a>
+        <a href="#">News</a>
+        <a href="#">About</a>
+    </nav>
 
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Sustainable Agriculture Innovations Feed the Nation</h3>
-                </article>
+    <button class="hamburger">
+        <span></span><span></span><span></span>
+    </button>
+</header>
 
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Indian Tech Startups Revolutionize Global Market</h3>
-                </article>
+<main>
 
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Cultural Heritage Meets Modern Innovation</h3>
-                </article>
-            </div>
-        </section>
+<!-- FEATURED -->
+<a href="featured.html" class="featured-link">
+<section class="featured" id="featured">
+    <h1 class="section-title">Featured</h1>
+    <img src="https://picsum.photos/1000/400" alt="">
+    <h2>India’s Economic Rise Reshaping Global Markets</h2>
+    <p>A deep analysis on how India’s economy is influencing global trade, tech, and geopolitics.</p>
+</section>
+</a>
 
-        <section class="latest-section">
-            <h1 class="section-title">Latest</h1>
-            <div class="articles-grid">
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Healthcare Innovation Reaches Remote Communities</h3>
-                </article>
+<!-- LATEST -->
+<section id="latest">
+<h1 class="section-title">Latest</h1>
+<div class="grid">
 
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Renewable Energy Projects Expand Across States</h3>
-                </article>
+<a href="article1.html" class="article-link">
+<article class="article">
+<img src="https://picsum.photos/600/300?1">
+<h3>Digital Revolution Transforms Indian Education</h3>
+</article>
+</a>
 
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Infrastructure Development Connects India</h3>
-                </article>
+<a href="article2.html" class="article-link">
+<article class="article">
+<img src="https://picsum.photos/600/300?2">
+<h3>Sustainable Agriculture Innovations</h3>
+</article>
+</a>
 
-                <article class="article-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect fill='%23e8e8e8' width='600' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='18' fill='%23999' text-anchor='middle' dominant-baseline='middle'%3EArticle Image%3C/text%3E%3C/svg%3E" alt="Article" class="article-image">
-                    <h3>Arts and Culture Shape India's Soft Power</h3>
-                </article>
-            </div>
-        </section>
-    </main>
+<a href="article3.html" class="article-link">
+<article class="article">
+<img src="https://picsum.photos/600/300?3">
+<h3>Indian Tech Startups Go Global</h3>
+</article>
+</a>
 
-    <footer>
-        <p class="footer-text">Thanks for reading</p>
-        <p class="footer-credit">trh.png</p>
-    </footer>
+<a href="article4.html" class="article-link">
+<article class="article">
+<img src="https://picsum.photos/600/300?4">
+<h3>Culture & Innovation Shape Soft Power</h3>
+</article>
+</a>
 
-    <script>
-        const cursor = document.querySelector('.cursor');
-        let mouseX = 0;
-        let mouseY = 0;
+</div>
+</section>
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.left = (mouseX - 6) + 'px';
-            cursor.style.top = (mouseY - 6) + 'px';
-        });
+</main>
 
-        document.addEventListener('mouseleave', () => {
-            cursor.style.display = 'none';
-        });
+<footer>
+<p>© The Rising Hindustan</p>
+<p>Designed by Vedant</p>
+</footer>
 
-        document.addEventListener('mouseenter', () => {
-            cursor.style.display = 'block';
-        });
+<script>
+/* Cursor */
+const cursor=document.querySelector('.cursor');
+document.addEventListener('mousemove',e=>{
+    if(cursor){
+        cursor.style.left=e.clientX-6+'px';
+        cursor.style.top=e.clientY-6+'px';
+    }
+});
 
-        const hamburger = document.querySelector('.hamburger');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-        });
-    </script>
+/* Hamburger */
+const ham=document.querySelector('.hamburger');
+const nav=document.querySelector('.nav');
+ham.onclick=()=>nav.classList.toggle('active');
+</script>
+
 </body>
-</html>
+    </html>
