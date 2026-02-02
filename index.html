@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rising Hindustan</title>
+
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo img {
+  height: 50px;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+}
+
+/* HAMBURGER */
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.mobile-nav a {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #000;
+}
+
+/* SECTIONS */
+section {
+  padding: 25px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+/* FEATURED */
+.featured {
+  display: flex;
+  flex-direction: column;
+}
+
+.featured img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.featured h3 {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+/* ARTICLE GRID */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.article {
+  cursor: pointer;
+}
+
+.article img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover; /* THIS FIXES IMAGE MESS */
+  border-radius: 6px;
+}
+
+.article h4 {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+footer img {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .mobile-nav.show {
+    display: flex;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="/images/logo.png" alt="Logo">
+  </div>
+
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/top.html">Top</a>
+    <a href="/latest.html">Latest</a>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/top.html">Top</a>
+  <a href="/latest.html">Latest</a>
+</div>
+
+<!-- FEATURED -->
+<section>
+  <h2>Featured</h2>
+  <div class="featured" onclick="goArticle('article1')">
+    <img src="/images/article1.png">
+    <h3>India’s Growth Story Continues Strongly</h3>
+  </div>
+</section>
+
+<!-- LATEST -->
+<section>
+  <h2>Latest Articles</h2>
+  <div class="article-grid">
+    <div class="article" onclick="goArticle('article2')">
+      <img src="/images/article2.png">
+      <h4>Union Budget 2026 Explained</h4>
+    </div>
+
+    <div class="article" onclick="goArticle('article3')">
+      <img src="/images/article3.png">
+      <h4>Tech Startups Rising in India</h4>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDING -->
+<section>
+  <h2>Trending</h2>
+  <div class="article-grid">
+    <div class="article" onclick="goArticle('article4')">
+      <img src="/images/article4.png">
+      <h4>India’s Global Influence Grows</h4>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="/images/logo.png">
+  <p>Thanks for reading ❤️</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileNav").classList.toggle("show");
+}
+
+function goArticle(slug) {
+  window.location.href = "/articles/" + slug + ".html";
+}
+</script>
+
+</body>
+</html>
