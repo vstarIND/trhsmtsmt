@@ -27,11 +27,11 @@ header{
     z-index:1000;
 }
 
-/* LOGO IMAGE */
+/* LOGO */
 .logo img{
-    height:48px;          /* fixed height */
-    width:auto;           /* auto width */
-    max-width:180px;      /* safety */
+    height:48px;
+    width:auto;
+    max-width:180px;
     object-fit:contain;
 }
 
@@ -72,7 +72,7 @@ header{
     cursor:pointer;
 }
 
-/* MOBILE */
+/* MOBILE NAV */
 @media(max-width:768px){
     .hamburger{display:block;}
 
@@ -88,7 +88,6 @@ header{
         transition:.4s;
         box-shadow:-10px 0 30px rgba(0,0,0,.1);
     }
-
     .nav.active{right:0;}
 }
 
@@ -113,7 +112,7 @@ main{
 .featured img{
     width:100%;
     height:420px;
-    object-fit:cover;     /* AUTO FIT ANY IMAGE */
+    object-fit:cover;
     margin-bottom:1.5rem;
 }
 .featured h2{
@@ -141,7 +140,7 @@ main{
 .article img{
     width:100%;
     height:220px;
-    object-fit:cover;     /* AUTO SIZE FIX */
+    object-fit:cover;
     margin-bottom:1rem;
     transition:.4s;
 }
@@ -160,17 +159,19 @@ footer{
     text-align:center;
     margin-top:4rem;
 }
-footer p{font-family:system-ui,sans-serif;color:#777;}
+footer p{
+    font-family:system-ui,sans-serif;
+    color:#777;
+}
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
-    <!-- LOGO IMAGE -->
     <div class="logo">
-        <img src="logo.jpg" alt="The Rising Hindustan">
-        
+        <img src="/images/logo.png" alt="The Rising Hindustan">
     </div>
 
     <nav class="nav">
@@ -183,61 +184,75 @@ footer p{font-family:system-ui,sans-serif;color:#777;}
     <button class="hamburger">☰</button>
 </header>
 
+<!-- ================= MAIN ================= -->
 <main>
 
-<a href="featured.html" class="featured-link">
+<!-- FEATURED ARTICLE -->
+<a href="/articles/newbudget2026.html" class="featured-link">
 <section class="featured" id="featured">
 <h1 class="section-title">Featured</h1>
-<img src="https://picsum.photos/1200/700">
-<h2>India’s Economic Rise Reshaping Global Markets</h2>
-<p>How India’s economy is influencing global trade and geopolitics.</p>
+<img src="/images/newbudget20261.png" alt="Union Budget 2026">
+<h2>Union Budget 2026: India’s Growth Roadmap</h2>
+<p>Finance Minister presents a growth-focused budget with reforms across economy, education and infrastructure.</p>
 </section>
 </a>
-<br>
-<br>
+
+<br><br>
+
+<!-- LATEST ARTICLES -->
 <section id="latest">
 <h1 class="section-title">Latest</h1>
+
 <div class="grid">
 
-<a href="#" class="article-link">
+<!-- ARTICLE 1 -->
+<a href="/articles/newbudget2026.html" class="article-link">
 <article class="article">
-<img src="https://picsum.photos/900/400">
-<h3>Digital Revolution in Education</h3>
+<img src="/images/newbudget20261.png" alt="">
+<h3>Union Budget 2026: Key Announcements</h3>
 </article>
 </a>
 
-<a href="#" class="article-link">
+<!-- ARTICLE 2 -->
+<a href="/articles/educationreform2026.html" class="article-link">
 <article class="article">
-<img src="https://picsum.photos/500/900">
-<h3>Sustainable Agriculture Growth</h3>
+<img src="/images/educationreform20261.png" alt="">
+<h3>Education Sector Gets Major Push</h3>
 </article>
 </a>
 
-
-    <a href="#" class="article-link">
+<!-- ARTICLE 3 (FUTURE) -->
+<!--
+<a href="/articles/article3.html" class="article-link">
 <article class="article">
-<img src="https://picsum.photos/900/400">
-<h3>Digital Revolution in Education</h3>
+<img src="/images/article31.png" alt="">
+<h3>Future Article Title</h3>
 </article>
 </a>
+-->
 
-<a href="#" class="article-link">
+<!-- ARTICLE 4 (FUTURE) -->
+<!--
+<a href="/articles/article4.html" class="article-link">
 <article class="article">
-<img src="https://picsum.photos/500/900">
-<h3>Sustainable Agriculture Growth</h3>
+<img src="/images/article41.png" alt="">
+<h3>Future Article Title</h3>
 </article>
 </a>
-    
+-->
+
 </div>
 </section>
 
 </main>
 
+<!-- ================= FOOTER ================= -->
 <footer>
 <p>© The Rising Hindustan</p>
 <p>A magazine capturing India’s rise</p>
 </footer>
 
+<!-- ================= JS ================= -->
 <script>
 const ham=document.querySelector('.hamburger');
 const nav=document.querySelector('.nav');
@@ -247,7 +262,6 @@ ham.onclick=()=>{
     ham.textContent = nav.classList.contains('active') ? '✖' : '☰';
 };
 
-/* Close on link click */
 document.querySelectorAll('.nav a').forEach(a=>{
     a.onclick=()=>{
         nav.classList.remove('active');
@@ -257,4 +271,4 @@ document.querySelectorAll('.nav a').forEach(a=>{
 </script>
 
 </body>
-    </html>
+</html>
